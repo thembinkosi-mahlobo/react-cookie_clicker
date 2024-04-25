@@ -2,7 +2,7 @@ App {
   background: url("./MyImages/mario\ backgroung.png");
   background-size: cover;
 }
-board {
+.Grid {
   width: 540px;
   height: 540px;
   margin: 0 auto;

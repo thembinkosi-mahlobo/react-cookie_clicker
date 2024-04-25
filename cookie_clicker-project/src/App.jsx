@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import MyComponent from "./MyComponent";
+import Grid from "./Component/Grid";
+
 
 export default function App() {
   const [cookies, setCookies] = useState(0);
@@ -27,18 +29,32 @@ export default function App() {
     } else {
       alert("You need more cookies to by Upgrade");
     }
+    
 
     useEffect(() => {
-      const interval = setInterval(()=>{
-        setCookies((currentCookies)=>currentCookies + cps), 1000/cps);
-      return ()=>{
-        clearInterval(interval);
+      setCookies((currentCookies) => {
+        return Math.round((currentCookies +cps)*20)/4;
+      });
+
+      const interval = setInterval(()=> {
+        setCookies((currentCookies)=> {
+          return Math.round((currentCookies + cps)*20/4);
+        });
+      },1000);
+      return () =>{clearInterval(interval);
       };
-    },[cps]);
+         //[cps]);
+  },
+  function updatecookies () {
+    setCookies((currentCookies) => {
+      return (Math.round((currentCookies + cps) *20) /4);
+    });
   }
 
   
-  return (
+
+
+   return (
     <>
       <div className="App">
         <img src="./src/MyImages/mario backgroung.png" alt="Click the Cookie" />
@@ -50,7 +66,8 @@ export default function App() {
         <button onClick={earnReward}>Reward 200 cookies for 10cps</button>
       </div>
       <div id="board"></div>
-      <MyComponent count={cookies} />
+      <MyComponent />
+      <Grid />
     </>
-  );
-}
+    )
+  }
