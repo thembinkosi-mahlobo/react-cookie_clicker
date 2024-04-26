@@ -18,7 +18,7 @@ button {
   align-items: center;
 }
 .App {
-  background-image: url("public/cookieBackground.png");
+  background-image: url("/cookieBackground.png");
   display: flex;
   flex-direction: column;
   align-items: center;
