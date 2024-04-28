@@ -33,9 +33,8 @@ export default function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCookies((currentCookies) =>
-        Math.round(((currentCookies + cps) * 20) / 4)
-      );
+      setCookies((cookies) => cookies + cps);
+      // Math.round(((currentCookies + cps) * 20) / 4)
     }, 1000);
     return () => {
       clearInterval(interval);
@@ -56,6 +55,9 @@ export default function App() {
         <button onClick={buyUpgrade}>Upgrade 20 cookies for 4cps</button>
         <button onClick={earnReward}>Reward 200 cookies for 10cps</button>
       </div>
+      <footer>
+        <p>by Themba &copy;</p>
+      </footer>
     </>
   );
 }
